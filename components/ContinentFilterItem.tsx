@@ -49,9 +49,8 @@ const Link = styled.a.attrs({
     transition: all 325ms;
 
     &:hover {
-        background-color: blue;
         border-color: blue;
-        color: white;
+        color: blue;
     }
 
     img {
