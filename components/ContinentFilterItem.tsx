@@ -38,7 +38,7 @@ const renderContinentMapImage = (name): string => {
 
 const Link = styled.a.attrs({
     href: "#"
-})`
+}) <{ isActive: boolean }>`
     font-size: 14px;
     color: ${props => props.isActive ? "blue" : "black"};
     display: inline-block;

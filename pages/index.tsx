@@ -57,7 +57,7 @@ const Index = () => {
         variables: { code: continentSelected },
     });
 
-    const onContinentSelected = (e: { preventDefault: () => void; }, continentID: React.SetStateAction<string>) => {
+    const onContinentSelected = (e, continentID) => {
         e.preventDefault();
         setContinentSelected(continentID);
     }
