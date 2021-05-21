@@ -36,7 +36,7 @@ const InfoRow = styled.div`
     margin: 0 0 8px;
 `;
 
-export const Country = ({ countries }): ICountry => {
+export const Country = ({ countries }) => {
     if (!countries) return null;
 
     return countries.map(({ name, emoji, native, capital, phone, currency }) => {
