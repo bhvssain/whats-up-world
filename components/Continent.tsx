@@ -1,9 +1,8 @@
-import React from "react";
-import styled from "styled-components";
+import React from "react"
+import Head from "next/head"
+import styled from "styled-components"
 
-import { IContinent } from "../interfaces/Interfaces";
-import { Country } from './Country';
-
+import { Country } from '../components/Country'
 
 const List = styled.ul`
     list-style-type: none;
@@ -12,11 +11,14 @@ const List = styled.ul`
 `
 
 export const Continent = ({ continent }) => {
-    if (!continent) return null;
-
     return (
-        <List>
-            <Country countries={continent.countries} />
-        </List>
+        <>
+            <Head>
+                <title>What's up {continent.name}</title>
+            </Head>
+            <List>
+                <Country countries={continent.countries} continentCode={continent.code} />
+            </List>
+        </>
     )
 }

@@ -1,53 +1,37 @@
-import styled from "styled-components";
-
-import { ICountry } from '../interfaces/Interfaces';
+import Link from "next/link"
+import styled from "styled-components"
 
 const ListItem = styled.li`
     background-color: #fefefe;
-    margin: 0 0 30px;
-    padding: 10px;
+    margin: 0 0 5px;
+    padding: 5px;
 
     &:nth-child(even) {
-        background-color: #fffcf6;
+        background-color: #eefdff;
     }
 `
 
 const Title = styled.h3`
-    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
-    padding: 0 0 5px;
-    margin: 0 0 10px;
     font-size: 18px;
+    margin: 10px 0;
 `
 
-const Link = styled.a.attrs(({ href }) => ({
-    rel: "noopener noreferrer",
-    target: "_blank",
-    href: `https://en.wikipedia.org/wiki/${href}`,
-}))`
-    color: blue;
-    text-decoration: none;
-`;
+const SmallText = styled.span`
+    font-size: 13px;
+    font-weight: normal;
+`
 
-const NativeCountryText = styled.span`
-    font-size: 12px;
-`;
-
-const InfoRow = styled.div`
-    margin: 0 0 8px;
-`;
-
-export const Country = ({ countries }) => {
+export const Country = ({ countries, continentCode }) => {
     if (!countries) return null;
 
-    return countries.map(({ name, emoji, native, capital, phone, currency }) => {
+    return countries.map(({ code, name, emoji, native }, index) => {
         return (
-            <ListItem key={name}>
+            <ListItem key={code}>
                 <Title>
-                    {emoji} <Link href={name}>{name}</Link> <NativeCountryText>[{native}]</NativeCountryText>
+                    <SmallText>{index + 1}.</SmallText>{' '}
+                    <Link href={`${continentCode}/${code}`}>{name}</Link>{' '}
+                    <SmallText>[{emoji}] [{native}]</SmallText>
                 </Title>
-                <InfoRow>Capital: {capital}</InfoRow>
-                <InfoRow>Phone: {phone}</InfoRow>
-                <InfoRow>Currency: {currency}</InfoRow>
             </ListItem>
         )
     })

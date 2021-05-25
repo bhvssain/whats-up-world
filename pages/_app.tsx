@@ -1,9 +1,9 @@
-import React, { Fragment } from "react";
-import App from "next/app";
-import Head from "next/head";
-import { ApolloProvider } from "@apollo/react-hooks";
-import { ApolloClient, NormalizedCacheObject } from "@apollo/client";
-import { ThemeProvider, createGlobalStyle } from "styled-components";
+import React, { Fragment } from "react"
+import App from "next/app"
+import Head from "next/head"
+import { ApolloProvider } from "@apollo/react-hooks"
+import { ApolloClient, NormalizedCacheObject } from "@apollo/client"
+import { ThemeProvider, createGlobalStyle } from "styled-components"
 
 import withApollo from "../hooks/withApollo";
 
@@ -26,6 +26,10 @@ const GlobalStyle = createGlobalStyle<IThemeWrapper>`
         font-family: Arial, sans-serif;
         font-size: 14px;
     }
+
+    p {
+        line-height: 22px;
+    }
 `
 
 interface IProps {
@@ -39,8 +43,8 @@ class WhatsUpWorld extends App<IProps> {
         return (
             <Fragment>
                 <Head>
-                    <title>Yo, what's up with the world</title>
                     <meta name="viewport" content="width=device-width, initial-scale=1" />
+                    <meta name="description" content="Statistics of continents and countries" />
                 </Head>
                 <ApolloProvider client={apollo}>
                     <ThemeProvider theme={theme}>

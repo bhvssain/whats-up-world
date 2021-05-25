@@ -1,17 +1,6 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
-import { IContinent } from '../interfaces/Interfaces';
-import { ContinentFilterItem } from "./ContinentFilterItem";
-
-interface IProps {
-    onContinentSelected: () => void,
-    continentSelected: string,
-    data: IContinent,
-}
-
-const Container = styled.div`
-    margin: 20px 0 40px;
-`;
+import { ContinentFilterItem } from "./ContinentFilterItem"
 
 const List = styled.ul`
     list-style-type: none;
@@ -19,14 +8,15 @@ const List = styled.ul`
     padding: 0;
     display: flex;
     justify-content: center;
-    overflow-y: scroll;
-`;
+    overflow-x: auto;
+    overflow-y: hidden;
+`
 
 export const ContinentFilter = ({ onContinentSelected, continentSelected, data }) => {
     if (!data) return null;
 
     return (
-        <Container>
+        <>
             <p>
                 <strong>Select a continent</strong>
             </p>
@@ -37,6 +27,6 @@ export const ContinentFilter = ({ onContinentSelected, continentSelected, data }
                     data={data}
                 />
             </List>
-        </Container>
+        </>
     )
 }

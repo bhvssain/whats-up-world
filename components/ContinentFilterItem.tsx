@@ -1,12 +1,5 @@
-import styled from "styled-components";
-
-import { IContinent } from '../interfaces/Interfaces';
-
-interface IProps {
-    onContinentSelected: () => void,
-    continentSelected: string,
-    data: IContinent,
-}
+import Link from "next/link"
+import styled from "styled-components"
 
 const ListItem = styled.li`
     text-align: center;
@@ -15,7 +8,7 @@ const ListItem = styled.li`
     &:last-of-type {
         margin-right: 0;
     }
-`;
+`
 
 const renderContinentMapImage = (name): string => {
     switch (name) {
@@ -36,9 +29,7 @@ const renderContinentMapImage = (name): string => {
     }
 }
 
-const Link = styled.a.attrs({
-    href: "#"
-}) <{ isActive: boolean }>`
+const StyledLink = styled.a`
     font-size: 14px;
     color: ${props => props.isActive ? "blue" : "black"};
     display: inline-block;
@@ -65,9 +56,11 @@ export const ContinentFilterItem = ({ onContinentSelected, continentSelected, da
     return data.map(({ code, name }) => {
         return (
             <ListItem key={code}>
-                <Link isActive={code === continentSelected} onClick={(e) => onContinentSelected(e, code)}>
-                    <img alt={`Map of ${name}`} src={renderContinentMapImage(code)} width="150px" />
-                    {name}
+                <Link passHref href={code}>
+                    <StyledLink isActive={code === continentSelected} onClick={() => onContinentSelected(code)}>
+                        <img alt={`Map of ${name}`} src={renderContinentMapImage(code)} width="100px" />
+                        {name}
+                    </StyledLink>
                 </Link>
             </ListItem>
         )

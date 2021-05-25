@@ -1,23 +1,18 @@
-import React, { Fragment, useState } from "react";
-import { useQuery } from "@apollo/react-hooks";
-import styled from "styled-components";
+import React, { useState } from "react"
+import { useQuery } from "@apollo/react-hooks"
+import { useRouter } from "next/router"
+import styled from "styled-components"
 
-import { MAIN_QUERY } from "../queries/queries";
-import { ContinentFilter } from '../components/ContinentFilter';
-import { ContinentIntro } from '../components/ContinentIntro';
-import { Continent } from "../components/Continent";
+import { MAIN_QUERY } from "../../queries/queries"
+import { ContinentFilter } from '../../components/ContinentFilter'
+import { ContinentIntro } from '../../components/ContinentIntro'
+import { Continent } from "../../components/Continent"
 
-const Header = styled.header`
+export const Container = styled.div`
     width: 550px;
     margin: 0 auto;
     position: relative;
-`;
-
-const Container = styled(Header)`
-    width: 550px;
-    margin: 0 auto;
-    position: relative;
-`;
+`
 
 const continentData = [
     {
@@ -51,14 +46,18 @@ const continentData = [
 ];
 
 const Index = () => {
-    const [continentSelected, setContinentSelected] = useState("EU");
+    const router = useRouter();
+    const { continentCode } = router.query;
+
+    console.log('router', router);
+
+    const [continentSelected, setContinentSelected] = useState(continentCode);
 
     const { loading, error, data } = useQuery(MAIN_QUERY, {
         variables: { code: continentSelected },
     });
 
-    const onContinentSelected = (e, continentID) => {
-        e.preventDefault();
+    const onContinentSelected = (continentID) => {
         setContinentSelected(continentID);
     }
 
@@ -70,22 +69,20 @@ const Index = () => {
     const continent = data.continents[0];
 
     return (
-        <Fragment>
-            <Header>
+        <Container>
+            <header>
                 <ContinentFilter
                     onContinentSelected={onContinentSelected}
                     continentSelected={continentSelected}
                     data={continentData}
                 />
-            </Header>
-            <Container>
-                <main>
-                    <ContinentIntro continent={continent} />
-                    <Continent continent={continent} />
-                </main>
-            </Container>
-        </Fragment>
+            </header>
+            <main>
+                <ContinentIntro continent={continent} />
+                <Continent continent={continent} />
+            </main>
+        </Container>
     )
 }
 
-export default Index;
+export default Index
