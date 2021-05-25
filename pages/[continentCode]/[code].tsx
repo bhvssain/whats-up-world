@@ -38,7 +38,7 @@ const MainInfo = styled.div`
     margin: 0 0 50px;
 `
 
-const EmptySpace = styled.span`
+const EmptySpace = styled("span")<{height: number}>`
     height: ${props => `${props.height}px` || "10px"};
     display: block;
 `
@@ -51,8 +51,6 @@ const ExternalLink = styled.a.attrs({
 const CountryDetail = () => {
     const router = useRouter();
     const { code } = router.query;
-
-    console.log('router', router);
 
     const { loading, error, data } = useQuery(DETAIL_QUERY, {
         variables: { code },

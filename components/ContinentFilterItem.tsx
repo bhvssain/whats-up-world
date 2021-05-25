@@ -29,7 +29,7 @@ const renderContinentMapImage = (name): string => {
     }
 }
 
-const StyledLink = styled.a`
+const StyledLink = styled("a")<{isActive: boolean}>`
     font-size: 14px;
     color: ${props => props.isActive ? "blue" : "black"};
     display: inline-block;

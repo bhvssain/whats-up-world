@@ -49,8 +49,6 @@ const Index = () => {
     const router = useRouter();
     const { continentCode } = router.query;
 
-    console.log('router', router);
-
     const [continentSelected, setContinentSelected] = useState(continentCode);
 
     const { loading, error, data } = useQuery(MAIN_QUERY, {

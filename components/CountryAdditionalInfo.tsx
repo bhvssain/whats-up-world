@@ -15,7 +15,7 @@ const BorderLink = styled(Link)`
 export const CountryAdditionalInfo = ({ code }) => {
     const [error, setError] = useState();
     const [loading, setLoading] = useState(true);
-    const [additionalInfo, setAdditionalInfo] = useState();
+    const [additionalInfo, setAdditionalInfo] = useState(undefined);
 
     useEffect(() => {
         fetch(`https://restcountries.eu/rest/v2/alpha/${code}`)
@@ -32,43 +32,43 @@ export const CountryAdditionalInfo = ({ code }) => {
             )
     }, []);
 
+    if (!additionalInfo) return null;
+
     if (loading) return <h1>Loading</h1>;
     if (error) return <h1>Error</h1>;
 
-    if (additionalInfo) {
-        const { borders, area, population } = additionalInfo;
+    const { borders, area, population } = additionalInfo;
 
-        const renderBorders = borders.map((border, index) => {
-            const twoLetterBorder = border.slice(0, -1);
-            const lastItem = index+1 === borders.length;
-
-            return (
-                <Fragment key={twoLetterBorder}>
-                    <BorderLink passHref href={twoLetterBorder}>
-                        <a>{twoLetterBorder}{!lastItem ? "," : null}</a>
-                    </BorderLink>
-                    {!lastItem ? " " : null}
-                </Fragment>
-            )
-        });
+    const renderBorders = borders.map((border, index) => {
+        const twoLetterBorder = border.slice(0, -1);
+        const lastItem = index+1 === borders.length;
 
         return (
-            <Container>
-                <h2>Additional information</h2>
-                <InfoList>
-                    {borders.length > 0 ? <InfoItem>
-                        Borders: {renderBorders}
-                    </InfoItem> : null}
-                    <InfoItem>
-                        Area in km<sup>2</sup>: {area}
-                    </InfoItem>
-                    <InfoItem>
-                        Population: {population}
-                    </InfoItem>
-                </InfoList>
-            </Container>
+            <Fragment key={twoLetterBorder}>
+                <BorderLink passHref href={twoLetterBorder}>
+                    <a>{twoLetterBorder}{!lastItem ? "," : null}</a>
+                </BorderLink>
+                {!lastItem ? " " : null}
+            </Fragment>
         )
-    }
+    });
+
+    return (
+        <Container>
+            <h2>Additional information</h2>
+            <InfoList>
+                {borders.length > 0 ? <InfoItem>
+                    Borders: {renderBorders}
+                </InfoItem> : null}
+                <InfoItem>
+                    Area in km<sup>2</sup>: {area}
+                </InfoItem>
+                <InfoItem>
+                    Population: {population}
+                </InfoItem>
+            </InfoList>
+        </Container>
+    )
 
     return null;    
 }
