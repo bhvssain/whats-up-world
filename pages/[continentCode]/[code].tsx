@@ -15,7 +15,7 @@ const BackToOverview = styled.a`
     border: 2px solid black;
     border-radius: 5px;
     padding: 10px 15px;
-    margin: 20px 0;
+    margin: 0 0 10px;
     color: blue;
 
     &:hover {
@@ -37,6 +37,7 @@ export const InfoList = styled.ul`
 
 export const InfoItem = styled.li`
     margin: 0 0 10px;
+    word-wrap: break-word;
 `
 
 const FlagIcon = styled.img`
