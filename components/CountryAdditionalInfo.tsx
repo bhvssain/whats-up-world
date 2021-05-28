@@ -69,6 +69,4 @@ export const CountryAdditionalInfo = ({ code }) => {
             </InfoList>
         </Container>
     )
-
-    return null;    
 }
