@@ -4,8 +4,8 @@ import { useRouter } from "next/router"
 import styled from "styled-components"
 
 import { MAIN_QUERY } from "../../queries/queries"
-import { ContinentFilter } from '../../components/ContinentFilter'
-import { ContinentIntro } from '../../components/ContinentIntro'
+import { ContinentFilter } from "../../components/ContinentFilter"
+import { ContinentIntro } from "../../components/ContinentIntro"
 import { Continent } from "../../components/Continent"
 
 export const Container = styled.div`

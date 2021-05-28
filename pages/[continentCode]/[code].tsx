@@ -8,7 +8,7 @@ import styled from "styled-components"
 import { DETAIL_QUERY } from "../../queries/queries"
 
 import { Container } from "./"
-import { CountryAdditionalInfo } from '../../components/CountryAdditionalInfo'
+import { CountryAdditionalInfo } from "../../components/CountryAdditionalInfo"
 
 const BackToOverview = styled.div`
     margin: 20px 0;
