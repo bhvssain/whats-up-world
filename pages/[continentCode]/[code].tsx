@@ -10,8 +10,17 @@ import { DETAIL_QUERY } from "../../queries/queries"
 import { Container } from "./"
 import { CountryAdditionalInfo } from "../../components/CountryAdditionalInfo"
 
-const BackToOverview = styled.div`
+const BackToOverview = styled.a`
+    display: inline-block;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 10px 15px;
     margin: 20px 0;
+    color: blue;
+
+    &:hover {
+        border-color: blue;
+    }
 `
 
 const SmallText = styled.span`
@@ -87,9 +96,11 @@ const CountryDetail = () => {
                 <title>What's up {name}</title>
             </Head>
             <Container>
-                <BackToOverview>
-                    <Link href={`/${continent.code}`}>&larr; back to overview</Link>
-                </BackToOverview>
+                <Link href={`/${continent.code}`} passHref>
+                    <BackToOverview>
+                        &larr; back to overview
+                    </BackToOverview>
+                </Link>
 
                 <h1>
                     {name}
