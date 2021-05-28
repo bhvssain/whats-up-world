@@ -6,6 +6,7 @@ import { renderContinentMapImage } from "./helpers"
 const ListItem = styled.li`
     text-align: center;
     margin-right: 10px;
+    margin-bottom: 10px;
 
     &:last-of-type {
         margin-right: 0;

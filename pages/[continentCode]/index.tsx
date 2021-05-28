@@ -11,6 +11,7 @@ import { Continent } from "../../components/Continent"
 export const Container = styled.div`
     width: 550px;
     margin: 0 auto;
+    padding: 20px;
     position: relative;
 `
 
