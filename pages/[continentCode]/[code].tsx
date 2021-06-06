@@ -37,8 +37,8 @@ const MainInfo = styled.div`
     margin: 0 0 50px;
 `
 
-const EmptySpace = styled("span")<{height: number}>`
-    height: ${props => `${props.height}px` || "10px"};
+const EmptySpace = styled("span")<{$height: number}>`
+    height: ${props => `${props.$height}px` || "10px"};
     display: block;
 `
 
@@ -127,11 +127,11 @@ const CountryDetail = () => {
                 </InfoList>
 
                 <p>
-                    <EmptySpace height={50} />
+                    <EmptySpace $height={50} />
 
                     Super cool huh?
 
-                    <EmptySpace height={70} />
+                    <EmptySpace $height={70} />
 
                     Yeah, thought so...
                 </p>
