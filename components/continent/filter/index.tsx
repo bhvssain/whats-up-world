@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-import { ContinentFilterItem } from "./ContinentFilterItem"
+import { FilterItem } from "./Item"
 
 const List = styled.ul`
     list-style-type: none;
@@ -10,12 +10,12 @@ const List = styled.ul`
     flex-wrap: wrap;
 `
 
-export const ContinentFilter = ({ onContinentSelected, continentSelected, data }) => {
+export const Filter = ({ onContinentSelected, continentSelected, data }) => {
     if (!data) return null;
 
     return (
         <List>
-            <ContinentFilterItem
+            <FilterItem
                 onContinentSelected={onContinentSelected}
                 continentSelected={continentSelected}
                 data={data}

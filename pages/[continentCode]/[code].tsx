@@ -5,10 +5,10 @@ import Link from "next/link"
 import { useRouter } from "next/router"
 import styled from "styled-components"
 
-import { DETAIL_QUERY } from "../../queries/queries"
+import { DETAIL_QUERY } from "../../queries"
 
-import { Container } from "./"
-import { CountryAdditionalInfo } from "../../components/CountryAdditionalInfo"
+import { Container, InfoList, InfoItem } from "../../components/shared"
+import { CountryAdditionalInfo } from "../../components/country/AdditionalInfo"
 
 const BackToOverview = styled.a`
     display: inline-block;
@@ -27,17 +27,6 @@ const SmallText = styled.span`
     font-size: 14px;
     font-weight: normal;
     color: #717171;
-`
-
-export const InfoList = styled.ul`
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-`
-
-export const InfoItem = styled.li`
-    margin: 0 0 10px;
-    word-wrap: break-word;
 `
 
 const FlagIcon = styled.img`
@@ -104,9 +93,9 @@ const CountryDetail = () => {
                 </Link>
 
                 <h1>
-                    {name}
+                    {name} {code}
                     <br/>
-                    <SmallText>[{code}] [{native}]</SmallText>
+                    <SmallText>[{native}]</SmallText>
                 </h1>
 
                 <FlagIcon alt={name} src={`https://flagpedia.net/data/flags/icon/80x60/${code.toString().toLowerCase()}.png`}/>

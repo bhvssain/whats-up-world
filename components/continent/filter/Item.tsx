@@ -1,7 +1,7 @@
 import Link from "next/link"
 import styled from "styled-components"
 
-import { renderContinentMapImage } from "./helpers"
+import { renderContinentMapImage } from "../../helpers"
 
 const ListItem = styled.li`
     text-align: center;
@@ -34,7 +34,7 @@ const StyledLink = styled("a")<{isActive: boolean}>`
     }
 `;
 
-export const ContinentFilterItem = ({ onContinentSelected, continentSelected, data }) => {
+export const FilterItem = ({ onContinentSelected, continentSelected, data }) => {
     if (!data) return null;
 
     return data.map(({ code, name }) => {

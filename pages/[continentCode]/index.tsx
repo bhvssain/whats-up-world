@@ -1,19 +1,12 @@
 import React, { useState } from "react"
 import { useQuery } from "@apollo/react-hooks"
 import { useRouter } from "next/router"
-import styled from "styled-components"
 
-import { MAIN_QUERY } from "../../queries/queries"
-import { ContinentFilter } from "../../components/ContinentFilter"
-import { ContinentIntro } from "../../components/ContinentIntro"
-import { Continent } from "../../components/Continent"
-
-export const Container = styled.div`
-    width: 550px;
-    margin: 0 auto;
-    padding: 20px;
-    position: relative;
-`
+import { MAIN_QUERY } from "../../queries"
+import { Filter } from "../../components/continent/filter"
+import { ContinentIntro } from "../../components/continent/Intro"
+import { Continent } from "../../components/continent"
+import { Container } from "../../components/shared"
 
 const continentData = [
     {
@@ -70,7 +63,7 @@ const Index = () => {
     return (
         <Container>
             <header>
-                <ContinentFilter
+                <Filter
                     onContinentSelected={onContinentSelected}
                     continentSelected={continentSelected}
                     data={continentData}

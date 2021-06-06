@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import styled from "styled-components"
 
-import { InfoList, InfoItem } from "../pages/[continentCode]/[code]"
+import { InfoList, InfoItem } from "../../components/shared"
 
 const Container = styled.div`
     margin: 0 0 50px;

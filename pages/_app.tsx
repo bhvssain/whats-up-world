@@ -5,7 +5,7 @@ import { ApolloProvider } from "@apollo/react-hooks"
 import { ApolloClient, NormalizedCacheObject } from "@apollo/client"
 import { ThemeProvider, createGlobalStyle } from "styled-components"
 
-import withApollo from "../hooks/withApollo";
+import withApollo from "../hooks";
 
 export interface ITheme {
     light: string;
